@@ -23,6 +23,8 @@
 - (void)setMediaInfo:(CDVInvokedUrlCommand*)command {
   NSString* title = [command argumentAtIndex:0];
   NSString* artworkUrl = [command argumentAtIndex:1];
+  NSString* duration = [command argumentAtIndex:2];
+  NSString* position = [command argumentAtIndex:3];
 
   // Run in the background since we're doing a network load.
   [self.commandDelegate runInBackground:^{
