@@ -1,6 +1,6 @@
 #import <Cordova/CDV.h>
 #import <AVFoundation/AVFoundation.h>
-#import <MediaPlayer/MediaPlayer.h>;
+#import <MediaPlayer/MediaPlayer.h>
 
 
 @interface BackgroundAudio : CDVPlugin
