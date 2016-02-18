@@ -35,10 +35,14 @@
     NSDictionary *currentlyPlayingTrackInfo = [NSDictionary dictionaryWithObjects:[NSArray arrayWithObjects:
         title,
         albumArt,
+        duration,
+        position,
         nil] 
       forKeys:[NSArray arrayWithObjects:
         MPMediaItemPropertyTitle,
         MPMediaItemPropertyArtwork,
+        MPMediaItemPropertyPlaybackDuration,
+        MPNowPlayingInfoPropertyElapsedPlaybackTime,
         nil]];
     [MPNowPlayingInfoCenter defaultCenter].nowPlayingInfo = currentlyPlayingTrackInfo;
   }];
