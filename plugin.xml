@@ -1,56 +1,57 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
-	xmlns:android="http://schemas.android.com/apk/res/android"
-	id="disciplezero.cordova.background-audio"
-	version="1.0.1">
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  id="disciplezero.cordova.background-audio"
+  version="1.0.1">
 
-	<name>background-audio</name>
+  <name>background-audio</name>
 
-	<description>
-		Background Audio for iOS
+  <description>
+    Background Audio for iOS
 
-		When included within a cordova/phonegap build then the application will support background audio for iOS
-		out of the box.
+    When included within a cordova/phonegap build then the application will support background audio for iOS
+    out of the box.
 
-		This negates having to use location/other solutions that may not be accepted by Apple.
-	</description>
+    This negates having to use location/other solutions that may not be accepted by Apple.
+  </description>
 
-	<keywords>background-audio,background,audio,media,ios</keywords>
+  <keywords>background-audio,background,audio,media,ios</keywords>
 
-	<license>MIT</license>
+  <license>MIT</license>
 
-	<author>source@kingsquare.nl</author>
+  <author>source@kingsquare.nl</author>
 
-	<repo>https://github.com/disciplezero/cordova-background-audio.git</repo>
-	<issue>https://github.com/disciplezero/cordova-background-audio/issues</issue>
+  <repo>https://github.com/disciplezero/cordova-background-audio.git</repo>
+  <issue>https://github.com/disciplezero/cordova-background-audio/issues</issue>
 
-	<engines>
-		<engine name="cordova" version=">=3.0.0" />
-	</engines>
+  <engines>
+    <engine name="cordova" version=">=3.0.0" />
+  </engines>
 
   <js-module src="www/BackgroundAudio.js" name="BackgroundAudio">
     <clobbers target="BackgroundAudio" />
   </js-module>
 
-	 <!-- ios -->
-	 <platform name="ios">
+   <!-- ios -->
+   <platform name="ios">
 
-		 <config-file target="config.xml" parent="/*">
-			 <feature name="BackgroundAudio">
-				 <param name="ios-package" value="BackgroundAudio" onload="true" />
-				 <param name="onload" value="true" />
-			 </feature>
-		 </config-file>
+     <config-file target="config.xml" parent="/*">
+       <feature name="BackgroundAudio">
+         <param name="ios-package" value="BackgroundAudio" onload="true" />
+         <param name="onload" value="true" />
+       </feature>
+     </config-file>
 
-		 <!-- The app is able to run in background through audio background mode -->
-		 <config-file target="*-Info.plist" parent="UIBackgroundModes">
-			 <array>
-				 <string>audio</string>
-			 </array>
-		 </config-file>
+     <!-- The app is able to run in background through audio background mode -->
+     <config-file target="*-Info.plist" parent="UIBackgroundModes">
+       <array>
+         <string>audio</string>
+       </array>
+     </config-file>
 
-		 <source-file src="src/ios/BackgroundAudio.m" />
+     <source-file src="src/ios/BackgroundAudio.m" />
+     <framework src="MediaPlayer.framework" />
 
-	 </platform>
+   </platform>
 
 </plugin>
