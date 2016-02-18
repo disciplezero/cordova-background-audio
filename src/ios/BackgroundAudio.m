@@ -18,4 +18,26 @@
 	}
 }
 
+- (void)setMediaInfo:(CDVInvokedUrlCommand*)command {
+  NSString* title = [command argumentAtIndex:0];
+  NSString* artworkUrl = [command argumentAtIndex:1];
+
+  // Run in the background since we're doing a network load.
+  [self.commandDelegate runInBackground:^{
+    // Get a UIImage from the url. // TODO: We could pass in an image, like a datauri.
+    UIImage *albumArtImage = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:artworkUrl]]];
+    MPMediaItemArtwork* albumArt = [[MPMediaItemArtwork alloc] initWithImage:albumArtImage];
+
+    NSDictionary *currentlyPlayingTrackInfo = [NSDictionary dictionaryWithObjects:[NSArray arrayWithObjects:
+        title,
+        albumArt,
+        nil] 
+      forKeys:[NSArray arrayWithObjects:
+        MPMediaItemPropertyTitle,
+        MPMediaItemPropertyArtwork,
+        nil]];
+    [MPNowPlayingInfoCenter defaultCenter].nowPlayingInfo = currentlyPlayingTrackInfo;
+  }];
+}
+
 @end
